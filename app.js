@@ -54,6 +54,23 @@ var pool = mysql.createPool({
 });
 
 app.use('/test', router);
+router.get('/add', function (req, res) {
+	pool.getConnection(function(err, connection) {
+		if (err) {
+			console.log(err)
+		} else {
+			var name = 'linsen'
+			var age = 28
+			connection.query("insert into user(name,age) values('"+name+"','"+ age +"')",function(err,rows){
+		        if(err){
+		            console.log(err)
+		        }else {
+		            console.log('yes')
+		        }
+		    });
+		}
+	})
+})
 router.get('/test', function (req, res) {
 	pool.getConnection(function(err, connection) {
 		if (err) {
