@@ -1,5 +1,5 @@
 import test from './test'
 
 export default app => {
-	app.use('/', test)
+	app.use('/test', test)
 }

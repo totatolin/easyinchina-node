@@ -2,15 +2,15 @@ import express from 'express'
 const router = express.Router();
 var db = require('../config/mysqlDB.js');
 
-router.get('/', function(req, res, next) {
+router.get('/test', function(req, res, next) {
 	db.query("select * from user",function(err,rows){
-        if(err){
-            res.render("users",{title:"用户列表",datas:[]});
-        }else {
-            res.render("users",{title:"用户列表",datas:rows});
-        }
-        console.log(res);
-    });
+    if(err){
+      res.send([]);
+    }else {
+      res.send(rows);
+    }
+    console.log(rows);
+  });
 });
 
 export default router
