@@ -43,12 +43,14 @@ var app = express();
 //     return promise; 
 // }
 
+app.set('view engine', 'jade');
+
 var mysql = require("mysql");
 var pool = mysql.createPool({
     host:"localhost",
     user:"root",
-    password:"",
-    database:"oa"
+    password:"root",
+    database:"db"
 });
 
 app.use('/test', router);
@@ -59,9 +61,9 @@ router.get('/test', function (req, res) {
 		} else {
 			connection.query("select * from user",function(err,rows){
 		        if(err){
-		            res.render("users",{title:"用户列表",datas:[]});
+		            res.render("index",{title:"用户列表2",datas:[]});
 		        }else {
-		            res.render("users",{title:"用户列表",datas:rows});
+		            res.render("index",{title:"用户列表1",datas:rows});
 		        }
 		    });
 		}
