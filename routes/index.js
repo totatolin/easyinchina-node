@@ -1,5 +1,5 @@
 import test from './test'
 
 export default app => {
-	app.use('/test', test)
+	app.use('/proxy-api/test', test);
 }
