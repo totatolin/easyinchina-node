@@ -1,8 +1,13 @@
 import express from 'express'
 const router = express.Router();
 var db = require('../config/mysqlDB.js');
+import formidable from 'formidable';
 
-router.get('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
+  const form = new formidable.IncomingForm();
+  form.parse(req, (err, fields) => {
+    console.log(fields)
+  })
 	db.query('SELECT * FROM user WHERE name = "linsen" AND age = 28',function(err,rows){
     if(err){
       res.send({

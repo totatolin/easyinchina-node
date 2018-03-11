@@ -17,15 +17,17 @@ var db = require('../config/mysqlDB.js');
 
 
 router.get('/test', function(req, res, next) {
-  console.log(res);
+  let aaa = "CREATE TABLE account(" +
+        "username varchar(64)," +
+        "password varchar(32)" +
+        ")";
   // res.header("X-Powered-By",' 3.2.1');
-	db.query("select * from user",function(err,rows){
+	db.query(aaa,function(err,rows){
     if(err){
-      res.send();
+      res.send({status: 'failed'});
     }else {
-      res.send(rows);
+      res.send({status: 'success'});
     }
-    console.log(rows);
   });
 });
 
