@@ -23,6 +23,20 @@ class Account {
       });
     })
   }
+  register (req, res) {
+    let aaa = "INSERT INTO account" +
+        "(email, username, password)" +
+        "value" +
+        "('totatolin@foxmail.com', 'linsen', 'ls3535135')";
+    db.query(aaa,function(err,rows){
+      console.log(err)
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(status.success);
+      }
+    });
+  }
 }
 
 export default new Account()

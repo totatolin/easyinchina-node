@@ -18,8 +18,11 @@ var db = require('../config/mysqlDB.js');
 
 router.get('/test', function(req, res, next) {
   let aaa = "CREATE TABLE account(" +
-        "username varchar(64)," +
-        "password varchar(32)" +
+        "id INT NOT NULL AUTO_INCREMENT," +
+        "email varchar(100) unique," +
+        "username varchar(64) unique," +
+        "password varchar(32)," +
+        "primary key (id)" +
         ")";
   // res.header("X-Powered-By",' 3.2.1');
 	db.query(aaa,function(err,rows){
