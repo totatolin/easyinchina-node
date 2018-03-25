@@ -1,17 +1,17 @@
 var db = require('../config/mysqlDB.js');
-import list from '../models/list.js';
+import shopList from '../models/shopList.js';
 import formidable from 'formidable';
 
-class List {
+class ShopList {
 	constructor () {
 
   }
   list (req, res) {
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields) => {
-      res.send(list);
+      res.send(shopList);
     })
   }
 }
 
-export default new List()
+export default new ShopList()

@@ -1,4 +1,4 @@
-let list = [
+let shopList = [
   {
     name: 'aaa',
     description: 'fdafdsafdsafadsfdg'
@@ -13,4 +13,4 @@ let list = [
   }
 ]
 
-export default list
+export default shopList

@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router();
-import List from '../controller/list';
+import ShopList from '../controller/shopList';
 
-router.post('/list', List.list);
+router.post('/list', ShopList.list);
 
 export default router
