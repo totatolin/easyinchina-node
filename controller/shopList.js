@@ -1,4 +1,5 @@
 var db = require('../config/mysqlDB.js');
+import status from '../models/status.js';
 import shopList from '../models/shopList.js';
 import formidable from 'formidable';
 
@@ -9,7 +10,8 @@ class ShopList {
   list (req, res) {
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields) => {
-      res.send(shopList);
+    	status.success.payload = shopList;
+      res.send(status.success);
     })
   }
 }

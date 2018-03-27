@@ -1,7 +1,8 @@
 let status = {
   success: {
     status: 0,
-    msg: 'success'
+    msg: 'success',
+    payload: null
   },
   failed: {
     status: 1,
