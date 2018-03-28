@@ -10,17 +10,17 @@ class Redis {
 
   }
   // 写入redis对象
-  hmset (a, b) {
-    let aaa = {}
-    aaa[a] = b
-    client.hmset('redisData', aaa, function(err) {
+  hmset (key, val) {
+    let obj = {}
+    obj[key] = val
+    client.hmset('redisData', obj, function(err) {
       console.log(err)
     })
   }
   // 读取redis对象
-  hgetall () {
+  hgetall (key, callback) {
     client.hgetall('redisData', function(err, object) {
-      console.log(object)
+      callback(object[key])
     })
   }
 }
@@ -29,9 +29,11 @@ class RedisData extends Redis {
   constructor () {
     super();
   }
-  hmset () {
-    super.hmset('vvv', 'ccc')
-    super.hgetall()
+  setShopList (key, val) {
+    super.hmset(key, val);
+  }
+  getShopList (key, callback) {
+    super.hgetall(key, callback);
   }
 }
 
