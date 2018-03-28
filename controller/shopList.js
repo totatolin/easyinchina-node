@@ -10,8 +10,16 @@ class ShopList {
   list (req, res) {
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields) => {
-    	status.success.payload = shopList;
-      res.send(status.success);
+      // status.success.payload = shopList;
+      // res.send(status.success);
+      db.query('SELECT * FROM list;',function(err,rows){
+        if (err) {
+          res.send(status.failed);
+        } else {
+          status.success.payload = rows;
+          res.send(status.success);
+        }
+      });
     })
   }
 }

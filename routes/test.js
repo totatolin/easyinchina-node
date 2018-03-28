@@ -11,20 +11,36 @@ client.on("error", function(error) {
 });
 
 router.get('/test', function(req, res, next) {
-  var qe = {a: 2, b:3, c:4};
-  client.hmset('field003', qe, function(err, response) {
-      console.log("err:", err);
-      console.log("response:", response);
-      client.hmget('field003', ['a', 'c'], function (err, res) {
-          console.log(err);
-          console.log(res);
-          client.end();
-      });
-  });
+  client.hmset('sessionid', { username: 'kris'}, function(err) {
+    console.log(err)
+  })
+  client.hmset('sessionid', { password: 'password' }, function(err) {
+    console.log(err)
+  })
+  client.hgetall('sessionid', function(err, object) {
+    console.log(object)
+  })
+  // var qe = {a: 2, b:3, c:4};
+  // client.hmset('field003', qe, function(err, response) {
+  //     console.log("err:", err);
+  //     console.log("response:", response);
+  //     client.hmget('field003', ['a', 'c'], function (err, res) {
+  //         console.log(err);
+  //         console.log(res);
+  //         client.end();
+  //     });
+  // });
   // let aaa = Object.keys(req.query)[0];
  //  let aaa = "CREATE TABLE list(" +
- //        "name varchar(100) ," +
- //        "description varchar(64)" +
+ //        "shop_name varchar(100) ," +
+ //        "shop_avatar varchar(100) ," +
+ //        "consumeption_level varchar(100) ," +
+ //        "shop_address varchar(100) ," +
+ //        "shop_tel varchar(100) ," +
+ //        "description varchar(100) ," +
+ //        "shop_location varchar(100) ," +
+ //        "label varchar(100) ," +
+ //        "address_link varchar(100)" +
  //        ")";
  //  // res.header("X-Powered-By",' 3.2.1');
 	// db.query(aaa,function(err,rows){
@@ -33,9 +49,9 @@ router.get('/test', function(req, res, next) {
  //    }else {
  //      list.forEach((item) => {
  //        let bbb = "INSERT INTO list" +
- //        "(name, description)" +
+ //        "(shop_name, shop_avatar, consumeption_level, shop_address, shop_tel, description, shop_location, label, address_link)" +
  //        "value" +
- //        "('" + item.name + "', '" + item.description + "');"
+ //        "('" + item.shop_name + "', '" + item.shop_avatar + "', '" + item.consumeption_level + "', '" + item.shop_address + "', '" + item.shop_tel + "', '" + item.description + "', '" + item.shop_location + "', '" + item.label + "', '" + item.address_link + "');"
  //        db.query(bbb,function(err,rows){
  //          console.log(err)
  //          if (err) {
