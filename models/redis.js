@@ -5,12 +5,13 @@ client.on("error", function(error) {
   console.log(error);
 });
 
-class Redis {
+// redis的父类方法
+class RedisFn {
   constructor () {
 
   }
   // 写入redis对象
-  hmset (key, val) {
+  hmset (key, val) {  
     let obj = {}
     obj[key] = val
     client.hmset('redisData', obj, function(err) {
@@ -26,7 +27,8 @@ class Redis {
   }
 }
 
-class RedisData extends Redis {
+// 商家列表
+class ShopList extends RedisFn {
   constructor () {
     super();
   }
@@ -38,4 +40,8 @@ class RedisData extends Redis {
   }
 }
 
-export default new RedisData()
+const ShopListData = new ShopList();
+
+export {
+  ShopListData
+}

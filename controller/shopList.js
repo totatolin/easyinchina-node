@@ -1,6 +1,6 @@
 var db = require('../config/mysqlDB.js');
 import status from '../models/status.js';
-import RedisData from '../models/redis.js';
+import {ShopListData} from '../models/redis.js';
 import formidable from 'formidable';
 
 class ShopList {
@@ -21,13 +21,13 @@ class ShopList {
               res.send(status.failed);
             } else {
               status.success.payload = rows;
-              RedisData.setShopList(sql, JSON.stringify(rows));
+              ShopListData.setShopList(sql, JSON.stringify(rows));
               res.send(status.success);
             }
           });
         }
       }
-      RedisData.getShopList(sql, callback);
+      ShopListData.getShopList(sql, callback);
     })
   }
 }
