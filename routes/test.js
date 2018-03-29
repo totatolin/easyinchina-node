@@ -11,15 +11,15 @@ client.on("error", function(error) {
 });
 
 router.get('/test', function(req, res, next) {
-  client.hmset('sessionid', { username: 'kris'}, function(err) {
+  client.del('redisData', function(err) {
     console.log(err)
   })
-  client.hmset('sessionid', { password: 'password' }, function(err) {
-    console.log(err)
-  })
-  client.hgetall('sessionid', function(err, object) {
-    console.log(object)
-  })
+  // client.hmset('sessionid', { password: 'password' }, function(err) {
+  //   console.log(err)
+  // })
+  // client.hgetall('sessionid', function(err, object) {
+  //   console.log(object)
+  // })
   // var qe = {a: 2, b:3, c:4};
   // client.hmset('field003', qe, function(err, response) {
   //     console.log("err:", err);

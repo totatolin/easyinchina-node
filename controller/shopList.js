@@ -1,8 +1,7 @@
 var db = require('../config/mysqlDB.js');
 import status from '../models/status.js';
-// import shopList from '../models/shopList.js';
-import formidable from 'formidable';
 import RedisData from '../models/redis.js';
+import formidable from 'formidable';
 
 class ShopList {
 	constructor () {
@@ -11,12 +10,10 @@ class ShopList {
   list (req, res) {
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields) => {
-      // status.success.payload = shopList;
-      // res.send(status.success);
       let sql = 'SELECT * FROM list;';
       var callback = function (result) {
         if (result) {
-          status.success.payload = result
+          status.success.payload = JSON.parse(result);
           res.send(status.success);
         } else {
           db.query(sql,function(err,rows){
@@ -24,7 +21,7 @@ class ShopList {
               res.send(status.failed);
             } else {
               status.success.payload = rows;
-              RedisData.setShopList(sql, rows.toString());
+              RedisData.setShopList(sql, JSON.stringify(rows));
               res.send(status.success);
             }
           });

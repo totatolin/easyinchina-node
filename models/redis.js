@@ -20,7 +20,8 @@ class Redis {
   // 读取redis对象
   hgetall (key, callback) {
     client.hgetall('redisData', function(err, object) {
-      callback(object[key])
+      let result = object ? object[key] : null;
+      callback(result);
     })
   }
 }
