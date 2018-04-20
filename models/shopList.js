@@ -1,6 +1,6 @@
 let shopList = [
   {
-    shop_name: 'aaa',
+    shop_name: 'aaaa',
     shop_avatar: '',
     consumeption_level: 1,
     shop_address: 'aaaaaaaaa',
@@ -11,7 +11,7 @@ let shopList = [
     address_link: 'fdafdsafasd'
   },
   {
-    shop_name: 'bbb',
+    shop_name: 'bbbb',
     shop_avatar: '',
     consumeption_level: 2,
     shop_address: 'bbbbbbbbb',
@@ -22,7 +22,7 @@ let shopList = [
     address_link: 'fdafdsafasd'
   },
   {
-    shop_name: 'ccc',
+    shop_name: 'cccc',
     shop_avatar: '',
     consumeption_level: 3,
     shop_address: 'ccccccccc',
