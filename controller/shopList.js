@@ -30,6 +30,21 @@ class ShopList {
       ShopListData.getShopList(sql, callback);
     })
   }
+  item (req, res) {
+    const form = new formidable.IncomingForm();
+    form.parse(req, (err, fields) => {
+      const {id} = fields;
+      let sql = `SELECT * FROM list WHERE id = ${id}`;
+      db.query(sql,function(err,rows){
+        if (err) {
+          res.send(status.failed);
+        } else {
+          status.success.payload = rows[0];
+          res.send(status.success);
+        }
+      });
+    })
+  }
 }
 
 export default new ShopList()

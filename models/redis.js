@@ -21,6 +21,7 @@ class RedisFn {
   // 读取redis对象
   hgetall (key, callback) {
     client.hgetall('redisData', function(err, object) {
+      console.log(object)
       let result = object ? object[key] : null;
       callback(result);
     })
